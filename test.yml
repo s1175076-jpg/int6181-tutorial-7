@@ -1,9 +1,10 @@
 name: Run Tests
 
 on:
+  push:
+    branches: [ main ]
   pull_request:
-    branches:
-      - '*'
+    branches: [ '*' ]
   workflow_dispatch:
 
 jobs:
@@ -22,4 +23,7 @@ jobs:
           python-version: '3.x'
 
       - name: Run tests
-        run: python -m unittest discover
+        run: |
+          python test_parking_fee.py
+          python test_password_validator.py
+          python test_triangle.py
